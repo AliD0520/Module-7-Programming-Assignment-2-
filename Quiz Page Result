@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Results</title>
+</head>
+<body>
+    <h2>Quiz Results</h2>
+    <%
+        int numQuestions = 5; 
+        int score = 0; 
+        
+        for (int i = 1; i <= numQuestions; i++) { 
+            int num1 = Integer.parseInt(request.getParameter("num1_" + i));
+            int num2 = Integer.parseInt(request.getParameter("num2_" + i));
+            int correctAnswer = num1 + num2;
+            int userAnswer = Integer.parseInt(request.getParameter("answer" + i));
+            
+            out.System.out.println("<p>" + num1 + " + " + num2 + " = " + userAnswer);
+            if (userAnswer == correctAnswer) { 
+                out.println("Correct!</p>");
+            } else { 
+                out.println("Incorrect! The correct answer is " + correctAnswer + ".</p>");
+            } 
+        } 
+        
+        out.println(<h3>Your Score: " + score + " out of " + numQuestions + "</h3>");
+      %> 
+      <a href="quiz.jsp"> Try Again</a>
+</body>
+</html>
